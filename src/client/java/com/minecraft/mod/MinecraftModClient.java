@@ -26,6 +26,10 @@ public class MinecraftModClient implements ClientModInitializer{
     public int posY;
     public int posZ;
 
+    public int posXSearch = 10;
+    public int posYSearch = 10;
+    public int posZSearch = 10;
+
 
     public void registerKeyMappings(){
         CATEGORY = KeyMapping.Category.register(
@@ -75,11 +79,11 @@ public class MinecraftModClient implements ClientModInitializer{
     public Map<Block, List<BlockPos>> Scanner (LevelChunk chunk, BlockPos startPos) {
         Map<Block, List<BlockPos>> blockAndCountable = new HashMap<>();
 
-        for (int i = 0; i < 5; i++) { // x
+        for (int i = 0; i < posXSearch; i++) { // x
             int blockPosX = startPos.getX() + i;
-            for (int j = 0; j < 5; j++) { // y
+            for (int j = 0; j < posYSearch; j++) { // y
                 int blockPosY = startPos.getY() - j;
-                for (int k = 0; k < 5; k++) {// z
+                for (int k = 0; k < posZSearch; k++) {// z
                     int blockPosZ = startPos.getZ() + k;
                     BlockPos blockPos1 = new BlockPos(blockPosX, blockPosY, blockPosZ);
                     BlockState blockInfoFromChunk = chunk.getBlockState(blockPos1);
