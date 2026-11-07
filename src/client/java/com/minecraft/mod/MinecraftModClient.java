@@ -79,11 +79,11 @@ public class MinecraftModClient implements ClientModInitializer{
     public Map<Block, List<BlockPos>> Scanner (LevelChunk chunk, BlockPos startPos) {
         Map<Block, List<BlockPos>> blockAndCountable = new HashMap<>();
 
-        for (int i = 0; i < posXSearch; i++) { // x
+        for (int i = -2; i <= posXSearch; i++) { // x
             int blockPosX = startPos.getX() + i;
-            for (int j = 0; j < posYSearch; j++) { // y
+            for (int j = -2; j <= posYSearch; j++) { // y
                 int blockPosY = startPos.getY() - j;
-                for (int k = 0; k < posZSearch; k++) {// z
+                for (int k = -2; k <= posZSearch; k++) {// z
                     int blockPosZ = startPos.getZ() + k;
                     BlockPos blockPos1 = new BlockPos(blockPosX, blockPosY, blockPosZ);
                     BlockState blockInfoFromChunk = chunk.getBlockState(blockPos1);
